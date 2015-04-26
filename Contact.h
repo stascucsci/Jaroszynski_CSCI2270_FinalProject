@@ -7,18 +7,20 @@ struct Contact {
 	Contact(string first = "",
 			string last = "",
 			string phone_ = "",
-			string addr = "",
+			string state_ = "",
 			int age_ = 0)
 		: firstName(first),
 		lastName(last),
 		phone(phone_),
-		address(addr),
+		state(state_),
 		age(age_) {}
+
+	void print();
 
 	string firstName;
 	string lastName;
 	string phone;
-	string address;
+	string state;
 	
 	int age;
 };

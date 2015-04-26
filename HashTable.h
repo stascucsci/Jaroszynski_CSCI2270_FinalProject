@@ -9,6 +9,7 @@ public:
 	~HashTable();
 	void addItem(string key, Contact *value);
 	vector<Contact *> findItem(string key);
+	void clear();
 	void print();
 
 private:

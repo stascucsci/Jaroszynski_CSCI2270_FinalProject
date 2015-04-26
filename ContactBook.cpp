@@ -32,13 +32,19 @@ bool ContactBook::readFromFile(string path)
 
 	std::getline(f, line);
 	while (std::getline(f, line)) {
+		line = line.substr(0, line.length() - 1);
 		Contact *c = new Contact();
 		std::stringstream ss(line);
+		cout << "\"" << line << "\"" << endl;
 		string token;
-		std::getline(ss, token); c->firstName = token;
-		std::getline(ss, token); c->lastName = token;
-		std::getline(ss, token); c->address = token;
-		std::getline(ss, token); c->phone = token;
+		std::getline(ss, token, ','); c->firstName = token;
+		cout << "\"" << token << "\"" << endl;
+		std::getline(ss, token, ','); c->lastName = token;
+		cout << "\"" << token << "\"" << endl;
+		std::getline(ss, token, ','); c->state = token;
+		cout << "\"" << token << "\"" << endl;
+		std::getline(ss, token, ','); c->phone = token;
+		cout << "\"" << token << "\"" << endl;
 		contacts.push_back(c);
 	}
 	f.close();
@@ -54,11 +60,11 @@ bool ContactBook::writeToFile(string path)
 		return 1;
 	}
 
-	f << "firstName,lastName,address,phone\n";
+	f << "firstName,lastName,city,phone\n";
 	for (int i = 0; i < contacts.size(); i++) {
 		f << contacts[i]->firstName << ",";
 		f << contacts[i]->lastName << ",";
-		f << contacts[i]->address << ",";
+		f << contacts[i]->state << ",";
 		f << contacts[i]->phone;
 		f << endl;
 	}
@@ -80,6 +86,7 @@ void ContactBook::removeContact(Contact *c) {
 			break;
 		}
 	}
+	createHash();
 }
 
 vector<Contact *> ContactBook::findAllByFirstName(string s) {
@@ -92,6 +99,7 @@ Contact * ContactBook::findByPhone(string s) {}
 
 void ContactBook::createHash()
 {
+	firstNameTable->clear();
 	for (int i = 0; i < contacts.size(); i++) {
 		firstNameTable->addItem(contacts[i]->firstName, contacts[i]);
 	}
