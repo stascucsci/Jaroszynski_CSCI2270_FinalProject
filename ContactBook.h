@@ -16,15 +16,23 @@ class ContactBook {
 
 		vector<Contact *>	findAllByFirstName(string s);
 		vector<Contact *>	findAllByLastName(string s);
-		vector<Contact *>	findAllByAge(string s);
-		Contact *			findByFullName(string s);
-		Contact *			findByPhone(string s);
+		vector<Contact *>	findAllByState(string s);
+		vector<Contact *>	findAllByPhone(string s);
+
+		vector<Contact *>	findMatching(vector<Contact *> a, vector<Contact *> b);
+
+		void printAll() const;
+		void printFirstNameHashTable() const;
+		void printLastNameHashTable() const;
+		void printStateHashTable() const;
+		void printPhoneHashTable() const;
 
 	//private:
 		vector<Contact *> contacts;
 		HashTable *firstNameTable;
-		HashTable *fullNameTable;
 		HashTable *lastNameTable;
+		HashTable *stateTable;
+		HashTable *phoneTable;
 		int hashSize;
 
 		void createHash();

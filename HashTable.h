@@ -8,6 +8,7 @@ public:
 	HashTable(int size_);
 	~HashTable();
 	void addItem(string key, Contact *value);
+	void removeItem(string key, Contact *value);
 	vector<Contact *> findItem(string key);
 	void clear();
 	void print();

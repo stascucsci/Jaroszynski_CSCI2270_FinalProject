@@ -21,6 +21,22 @@ void HashTable::addItem(string key, Contact *value)
 	data[hash].push_back(HashTableItem(key, value));
 }
 
+void HashTable::removeItem(string key, Contact *value)
+{
+	int hash = getHash(key);
+	for (int i = 0; i < data[hash].size(); i++) {
+		for (int j = 0; j < data[hash][i].values.size(); j++) {
+			if (data[hash][i].values[j] == value) {
+				if (data[hash][i].values.size() == 1)
+					data[hash].erase(data[hash].begin() + i);
+				else
+					data[hash][i].values.erase(data[hash][i].values.begin() + j);
+				return;
+			}
+		}
+	}
+}
+
 vector<Contact *> HashTable::findItem(string key)
 {
 	int hash = getHash(key);
