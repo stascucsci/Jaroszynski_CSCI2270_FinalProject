@@ -75,7 +75,7 @@ void findContact()
 	vector<Contact *> allLast = cb->findAllByLastName(last);
 	vector<Contact *> allState = cb->findAllByState(state);
 	vector<Contact *> allPhone = cb->findAllByPhone(phone);
-	vector<Contact *> ret;
+	vector<Contact *> ret; // Initialize ret to first non-null search
 	if (first.size())
 		ret.insert(ret.end(), allFirst.begin(), allFirst.end());
 	else if (last.size())
@@ -85,6 +85,7 @@ void findContact()
 	else if (phone.size())
 		ret.insert(ret.end(), allPhone.begin(), allPhone.end());
 		
+	// Merge ret with each other non-null result
 	if (first.length())
 		ret = cb->findMatching(ret, allFirst);
 	if (last.length())
@@ -124,7 +125,7 @@ void deleteContact()
 	vector<Contact *> allLast = cb->findAllByLastName(last);
 	vector<Contact *> allState = cb->findAllByState(state);
 	vector<Contact *> allPhone = cb->findAllByPhone(phone);
-	vector<Contact *> ret;
+	vector<Contact *> ret; // Initialize ret to first non-null search
 	if (first.size())
 		ret.insert(ret.end(), allFirst.begin(), allFirst.end());
 	else if (last.size())
@@ -134,6 +135,7 @@ void deleteContact()
 	else if (phone.size())
 		ret.insert(ret.end(), allPhone.begin(), allPhone.end());
 		
+	// Merge ret with each other non-null result
 	if (first.length())
 		ret = cb->findMatching(ret, allFirst);
 	if (last.length())

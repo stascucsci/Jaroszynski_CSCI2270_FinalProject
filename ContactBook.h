@@ -27,7 +27,7 @@ class ContactBook {
 		void printStateHashTable() const;
 		void printPhoneHashTable() const;
 
-	//private:
+	private:
 		vector<Contact *> contacts;
 		HashTable *firstNameTable;
 		HashTable *lastNameTable;
