@@ -6,8 +6,8 @@
 struct Contact {
 	Contact(string first = "",
 			string last = "",
-			string phone_ = "",
 			string state_ = "",
+			string phone_ = "",
 			int age_ = 0)
 		: firstName(first),
 		lastName(last),
